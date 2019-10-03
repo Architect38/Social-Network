@@ -1,0 +1,32 @@
+.App{
+    display: grid;
+    grid-template-rows: 7rem 30rem minmax(1rem, 1fr) 4rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1%;
+    grid-template-areas: "h h h h h h h h h h h h"
+                         "m m c c c c c c c c c c"
+                         ". . c c c c c c c c c c"
+                         "f f f f f f f f f f f f";
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+    width:90rem;
+    
+}
+.App>div{
+    background: gold;
+}
+.header{
+   grid-area: h;
+}
+.content{
+    grid-area: c;
+}
+.menu{
+    grid-area: m;
+}
+.footer{
+    grid-area: f;
+}
+
+
