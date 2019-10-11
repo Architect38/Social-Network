@@ -1,12 +1,12 @@
 import React from 'react';
 import MyPosts from './my_posts/MyPosts';
-import s from './Content.module.css';
+import s from './Profile.module.css';
 
-function Content(){
+function Profile(){
   return (
-    <div className="content">
+    <div>
       <MyPosts />
     </div>
   );
 }
-export default Content;
+export default Profile;

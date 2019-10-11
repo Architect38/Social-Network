@@ -1,18 +1,27 @@
 import React from 'react';
 import './App.css';
+import {BrowserRouter, Route} from 'react-router-dom';
+//import { domainToASCII } from 'url';
+
 import Menu from './components/menu/Menu';
-import Content from './components/content/Content';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
+import Profile from './components/content/profile/Profile';
+import Dialogs from './components/content/dialogs/Dialogs';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
         <Menu />
         <Header />
-        <Content />
+        <div className="content">
+            <Route path="/profile" component={Profile}/>
+            <Route path="/dialogs" component={Dialogs}/>
+        </div>
         <Footer />
     </div>
+    </BrowserRouter> 
   );
 }
 

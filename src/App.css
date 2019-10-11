@@ -10,25 +10,16 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 5rem;
+    margin-bottom: 5rem;
     width:90rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     
-}
-
-.header{
-   grid-area: h;
-   background: gold;
 }
 .content{
     grid-area: c;
     background: gold;
 }
-.menu{
-    grid-area: m;
-    background: gold;
-}
-.footer{
-    grid-area: f;
-    background: gold;
-}
+
+
 
 
