@@ -1,0 +1,23 @@
+.item textarea{
+  overflow: auto;
+  resize: none;
+  border: 2px solid #555555;
+  margin: 1rem;
+  font-size: 1.5rem;
+  height: 15rem;
+  width: 40%;
+}
+.item button{
+  padding: 1rem;
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  font-size: 1.2rem;
+  position: relative;
+  top:-14rem;
+}
+
+.item button:hover {
+  background-color: #555555;
+  color: white;
+}
