@@ -1,18 +1,19 @@
 .item {
   margin:1rem;
-  border: 2px solid #555555;
+  border: 0.02rem solid black;
+  border-radius: 1rem;
+  background: #DAE8E2;
   padding: 1rem;
 }
 .item img{
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  
+
 }
 .item p{
   display: inline;
-  padding-left:1rem;
   position: relative;
-  top:-150px;
-  font-size: 1.2rem;
+  top:-70px;
+  margin-left:1rem;
 }

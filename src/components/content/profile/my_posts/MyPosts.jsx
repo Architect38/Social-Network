@@ -6,7 +6,7 @@ function MyPosts(){
   return (
     <div className={s.item}>
       <textarea placeholder="Write your Post!"></textarea>
-      <button>Добавить запись</button>
+      <a href="#">Добавить запись</a>
       <Post/>
       <Post/>
       <Post/>
