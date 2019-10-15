@@ -1,22 +1,16 @@
 import React from 'react';
 import s from './Dialogs.module.css';
 import User from './user/User';
+import Message from './message/Message';
 
-const userData = [
-  {id:1, name:"Andrew"},
-  {id:2, name:"Katya"},
-  {id:3, name:"Nastya"},
-  {id:4, name:"Peter"},
-];
-
-function Dialogs(){
+function Dialogs(props){
   return (
     <div className={s.main}>
       <div className={s.users}>
-         <User data={userData} />
+         <User state={props.state.users} />
       </div>
       <div className={s.dialogs}>
-          Текст
+          <Message state={props.state.messages} />
       </div>
     </div>
   );

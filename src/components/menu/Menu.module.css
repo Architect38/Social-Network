@@ -1,6 +1,6 @@
 .menu{
     grid-area: m;
-
+    margin-left:1rem;
 }
 .menu div{
     margin-top:1rem;

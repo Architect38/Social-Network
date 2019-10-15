@@ -7,7 +7,7 @@ function Menu(){
     <div className={s.menu}>
       <div><NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink></div>
       <div><NavLink to="/dialogs" activeClassName={s.activeLink}>Dialogs</NavLink></div>
-      <div><a href="#">About</a></div>
+      <div><a href="#">Friends</a></div>
     </div>
   );
 }

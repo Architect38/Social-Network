@@ -1,13 +1,13 @@
-.item textarea{
+.main textarea{
   overflow: auto;
   resize: none;
   border: 0.02rem solid black;
   margin-top: 2rem;
-  margin-left: 1rem;
+  margin-left: 2rem;
   width: 40%;
   height: 7rem;
 }
-.item a{
+.main a{
   text-decoration: none;
   display:inline;
   position: relative;
@@ -17,7 +17,29 @@
   color:black;
   border:0.02rem solid black;
 }
-.item a:hover {
+.main a:hover {
   background-color: #555555;
   color: white;
+}
+
+.posts{
+  margin: 1rem;
+}
+.post{
+  margin:1rem;
+  border-radius: 1rem;
+  background: #DAE8E2;
+  padding: 1rem;
+}
+.post img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+}
+.post p{
+  display: inline;
+  position: relative;
+  top:-70px;
+  margin-left:1rem;
 }

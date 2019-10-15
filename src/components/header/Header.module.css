@@ -1,4 +1,6 @@
-.header{
+.main{
     grid-area: h;
-    background: gold;
+    background: linear-gradient(#20beb1a1, #555555);
+    border-radius: 1rem;
+    margin-top: 1rem;
 }

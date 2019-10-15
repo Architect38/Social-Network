@@ -1,16 +1,24 @@
 import React from 'react';
 import s from './MyPosts.module.css';
-import Post from './post/Post';
 
-function MyPosts(){
+function MyPosts(props){
+  let posts = props.state.map((item)=>{
+      return(
+        <div className={s.post}>
+          <img src='\avatar.jpg'/>
+          <p>{item.post}</p>
+        </div>
+      );
+  });
+
   return (
-    <div className={s.item}>
+    <div className={s.main}>
       <textarea placeholder="Write your Post!"></textarea>
       <a href="#">Добавить запись</a>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
+
+      <div className={s.posts}>
+          {posts}
+      </div>
     </div>
   );
 }

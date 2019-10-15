@@ -1,11 +1,13 @@
 import React from 'react';
-import MyPosts from './my_posts/MyPosts';
 import s from './Profile.module.css';
+import MyPosts from './my_posts/MyPosts';
+import ProfileInfo from './profile_info/ProfileInfo';
 
-function Profile(){
+function Profile(props){
   return (
     <div className={s.main}>
-      <MyPosts />
+      <ProfileInfo/>
+      <MyPosts state={props.state.posts}/>
     </div>
   );
 }
