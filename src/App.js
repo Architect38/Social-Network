@@ -9,6 +9,9 @@ import Header from './components/header/Header';
 import Profile from './components/content/profile/Profile';
 import Dialogs from './components/content/dialogs/Dialogs';
 
+
+
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -16,7 +19,7 @@ function App(props) {
         <Menu />
         <Header />
         <div className="content">
-            <Route path="/profile" render={()=><Profile state={props.state.profilePage}/>}/>
+            <Route path="/profile" render={()=><Profile state={props.state.profilePage} addPost = {props.addPost} changePost = {props.changePost}/>}/>
             <Route path="/dialogs" render={()=><Dialogs state={props.state.dialogsPage}/>}/>
         </div>
         <Footer />

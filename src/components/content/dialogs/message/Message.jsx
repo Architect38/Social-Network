@@ -8,8 +8,10 @@ function Message(props){
         return <p>{item.message}</p>
     });
     return(
-        <div>
+        <div className={s.main}>
            {message}
+           <textarea></textarea>
+           <a href="#">Отправить сообщение</a>
         </div>
     );
 }

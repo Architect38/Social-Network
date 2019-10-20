@@ -20,12 +20,21 @@ let state = {
           {id:1, post:"Post#1"},
           {id:2, post:"Post#2"},
           {id:3, post:"Post#3"},
-          {id:4, post:"Post#4"},
-          {id:5, post:"Post#5"},
-          {id:6, post:"Post#6"},
-          {id:7, post:"Post#7"},
       ]
   }
+}
+
+let rerenderTree;
+export function addPost(newPost){
+  state.profilePage.posts.push({id:5,post:newPost});
+  rerenderTree();
+}
+export function changePost(newText){
+  
+  rerenderTree();
+}
+export function subscribe(observer){ //паттерн наблюдатель. Вот так мы прокинули функцию из другого файла не используя импорт. Иначе была бы циркулярная зависимость, это плохо.
+  rerenderTree = observer;
 }
 
 export default state;
