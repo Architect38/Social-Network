@@ -1,26 +1,29 @@
 import React from 'react';
 import s from './MyPosts.module.css';
+import { addPostActionCreator, changePostActionCreator } from '../../../../redux/state';
 
 let MyRef = React.createRef();
 
 
 function MyPosts(props){
-  let posts = props.state.map((item)=>{
-      return(
+  let posts = [];
+  for (let i = props.state.length-1;i>=0;i--){
+      posts.push(
         <div className={s.post}>
-          <img src='\avatar.jpg'/>
-          <p>{item.post}</p>
-        </div>
-      );
-  });
- 
+          <img src ='avatar.jpg' className={s.avatar}/>
+          <p className={s.text_post}>{props.state[i].post}</p>
+        </div>);
+  }
   function addPost(e){
-    props.addPost(MyRef.current.value);
+    let action = addPostActionCreator(MyRef.current.value);
+    if (MyRef.current.value!="") props.dispatch(action);
     e.preventDefault();
     MyRef.current.value = '';
   }
   function changePost(){
-    props.changePost(MyRef.current.value);
+    
+    let action = changePostActionCreator();
+    props.dispatch(action);
   }
 
   return (
