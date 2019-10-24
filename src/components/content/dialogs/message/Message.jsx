@@ -1,17 +1,25 @@
 import React from 'react';
 import s from './Message.module.css';
+import { addMessageActionCreator } from '../../../../redux/state';
 
-
+const MyRef = React.createRef();
 function Message(props){
     
     let message = props.state.map((item)=>{
         return <p>{item.message}</p>
     });
+
+    function addMessage(e){
+       let action = addMessageActionCreator(MyRef.current.value);
+       props.dispatch(action);
+       e.preventDefault();
+       MyRef.current.value = '';
+    }
     return(
         <div className={s.main}>
            {message}
-           <textarea></textarea>
-           <a href="#">Отправить сообщение</a>
+           <textarea ref = {MyRef}></textarea>
+           <a href="#" onClick = {addMessage}>Отправить сообщение</a>
         </div>
     );
 }

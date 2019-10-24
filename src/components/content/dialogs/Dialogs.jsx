@@ -10,7 +10,7 @@ function Dialogs(props){
          <User state={props.state.users} />
       </div>
       <div className={s.dialogs}>
-          <Message state={props.state.messages} />
+          <Message state={props.state.messages} dispatch = {props.dispatch}/>
       </div>
     </div>
   );
