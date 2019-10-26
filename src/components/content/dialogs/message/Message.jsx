@@ -5,13 +5,13 @@ import { addMessageActionCreator } from '../../../../redux/dialogs_reducer';
 const MyRef = React.createRef();
 function Message(props){
     
-    let message = props.state.map((item)=>{
+    let message = props.state.messages.map((item)=>{
         return <p>{item.message}</p>
     });
 
     function addMessage(e){
        let action = addMessageActionCreator(MyRef.current.value);
-       props.dispatch(action);
+       if (MyRef.current.value!="") props.dispatch(action);
        e.preventDefault();
        MyRef.current.value = '';
     }

@@ -13,14 +13,15 @@ import Dialogs from './components/content/dialogs/Dialogs';
 
 
 function App(props) {
+  
   return (
     <BrowserRouter>
     <div className="App">
         <Menu />
         <Header />
         <div className="content">
-            <Route path="/profile" render={()=><Profile state={props.state.profilePage} dispatch = {props.dispatch}/>}/>
-            <Route path="/dialogs" render={()=><Dialogs state={props.state.dialogsPage} dispatch = {props.dispatch}/>}/>
+            <Route path="/profile" render={()=><Profile state={props.store.getState().profilePage} dispatch = {props.store.dispatch}/>}/>
+            <Route path="/dialogs" render={()=><Dialogs state={props.store.getState().dialogsPage} dispatch = {props.store.dispatch}/>}/>
         </div>
         <Footer />
     </div>

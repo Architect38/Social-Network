@@ -7,10 +7,10 @@ function Dialogs(props){
   return (
     <div className={s.main}>
       <div className={s.users}>
-         <User state={props.state.users} />
+          <User state={props.state} />
       </div>
       <div className={s.dialogs}>
-          <Message state={props.state.messages} dispatch = {props.dispatch}/>
+          <Message state={props.state} dispatch = {props.dispatch}/>
       </div>
     </div>
   );

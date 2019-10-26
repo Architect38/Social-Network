@@ -9,11 +9,11 @@ let MyRef = React.createRef();
 
 function MyPosts(props){
   let posts = [];
-  for (let i = props.state.length-1;i>=0;i--){
+  for (let i = props.state.posts.length-1;i>=0;i--){
       posts.push(
         <div className={s.post}>
           <img src ='avatar.jpg' className={s.avatar}/>
-          <p className={s.text_post}>{props.state[i].post}</p>
+          <p className={s.text_post}>{props.state.posts[i].post}</p>
         </div>);
   }
   function addPost(e){

@@ -3,7 +3,7 @@ import s from './User.module.css';
 
 
 function User(props){
-  let name = props.state.map((item)=>{
+  let name = props.state.users.map((item)=>{
      return <a href="#">{item.name}</a>
   });
   return (
