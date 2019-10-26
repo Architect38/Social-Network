@@ -1,20 +1,6 @@
-//Типы action====================================
-const add_post = "add_post";
-const change_post = "change_post";
-const add_message = "add_message";
-//===============================================
+import profileReducer from './profile_reducer';
+import dialogsReducer from './dialogs_reducer';
 
-//Конструкторы action============================
-export const addPostActionCreator = function(newPost){
-  return {type: add_post, newPost:newPost}
-}
-export const changePostActionCreator = function(){
-  return {type: change_post}
-}
-export const addMessageActionCreator = function(message){
-  return {type:add_message, message: message}
-}
-//=================================================
 const store = {
   state:{
     dialogsPage:{
@@ -46,24 +32,11 @@ const store = {
   subscribe(observer){ //паттерн наблюдатель. Вот так мы прокинули функцию из другого файла не используя импорт. Иначе была бы циркулярная зависимость, это плохо.
     this._rerenderTree = observer;
   },
-  //Методы============================================================
-  _addPost(newPost){
-    this.state.profilePage.posts.push({id:5,post:newPost, status:"added"});
-    this._rerenderTree();
-  },
-  _changePost(){
-    this._rerenderTree();
-  },
-  _addMessage(message){
-    this.state.dialogsPage.messages.push({id:7, message:message});
-    this._rerenderTree();
-  },
-  //=================================================================
   
   dispatch(action){
-    if (action.type===add_post) this._addPost(action.newPost);
-    if (action.type===change_post) this._changePost();
-    if (action.type===add_message) this._addMessage(action.message);
+    profileReducer(this.state.profilePage, action); 
+    dialogsReducer(this.state.dialogsPage, action);
+    this._rerenderTree();
   }
 }
 export default store;

@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './MyPosts.module.css';
-import { addPostActionCreator, changePostActionCreator } from '../../../../redux/state';
+import { addPostActionCreator, changePostActionCreator } from './../../../../redux/profile_reducer';
+
+
 
 let MyRef = React.createRef();
 
