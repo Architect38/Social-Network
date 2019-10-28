@@ -1,0 +1,28 @@
+.main{
+    margin: 1rem;
+}
+.friend{
+   margin-top:1rem; 
+}
+.friend img{
+    
+    width: 100px;
+    height: 100px;
+     
+}
+.friend p{
+    display: inline-block;
+}
+.friend a{
+    text-decoration: none;
+    border:0.02rem solid black;
+    padding: 0.2rem;
+    color:black;
+    
+}
+.follow{
+    background-color: rgb(15, 207, 63);
+}
+.unfollow{
+    background-color: rgb(235, 8, 8);
+}

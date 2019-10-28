@@ -22,15 +22,16 @@ let initialState = {
 }
 //===================================================
 
-const profileReducer = function(state = initialState,action){
+const profileReducer = function(state = initialState,action){ //При изменении состояния мы должны возвращать копию объекта
     switch(action.type){
         case add_post: 
-            state.posts.push({id:5,post:action.newPost, status:"added"});
-            break;
+            return {      //возвращаем объект
+                ...state, //свойства от изначального объекта
+                posts: [...state.posts, {id:8, post: action.newPost, status:"added" }] //перезаписываем posts, где добавляем новый пост
+            }
         default:
             return state;
     }
-    return state;
 }
 
 export default profileReducer;

@@ -1,17 +1,15 @@
 import React from 'react';
 import s from './Message.module.css';
-import { addMessageActionCreator } from '../../../../redux/dialogs_reducer';
 
 const MyRef = React.createRef();
 function Message(props){
     
-    let message = props.state.messages.map((item)=>{
+    let message = props.messages.map((item)=>{
         return <p>{item.message}</p>
     });
 
     function addMessage(e){
-       let action = addMessageActionCreator(MyRef.current.value);
-       if (MyRef.current.value!="") props.dispatch(action);
+       props.addMessage(MyRef.current.value);
        e.preventDefault();
        MyRef.current.value = '';
     }

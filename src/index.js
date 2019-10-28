@@ -4,13 +4,30 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
+import {Provider} from 'react-redux'; //С помощью провайдера мы можем прокинуть store на все приложение.
 
 
-function rerenderTree(){ //оборачиваем перерисовку в функцию, чтобы ее можно было вызывать после каждого изменения в состоянии
-    ReactDOM.render(<App store = {store}/>, document.getElementById('root'));
-}
-
-rerenderTree(); //стартуем
-store.subscribe(rerenderTree); //прокидываем перерисовку в store. Это необходимо для перерисовки UI после изменения state
+ReactDOM.render(
+    <Provider store = {store}> 
+        <App/> 
+    </Provider>,
+    document.getElementById('root')
+);
 
 serviceWorker.unregister();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

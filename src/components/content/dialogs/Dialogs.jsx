@@ -4,13 +4,14 @@ import User from './user/User';
 import Message from './message/Message';
 
 function Dialogs(props){
+  debugger;
   return (
     <div className={s.main}>
       <div className={s.users}>
-          <User state={props.state} />
+          <User users = {props.users}/>
       </div>
       <div className={s.dialogs}>
-          <Message state={props.state} dispatch = {props.dispatch}/>
+          <Message messages = {props.messages} addMessage = {props.addMessage}/>
       </div>
     </div>
   );

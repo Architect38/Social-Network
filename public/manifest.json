@@ -11,6 +11,11 @@
       "src": "avatar.jpg",
       "type": "image/jpg",
       "sizes": "192x192"
+    },
+    {
+      "src": "avatar_friend.png",
+      "type": "image/png",
+      "sizes": "192x192"
     }
   ],
   "start_url": ".",

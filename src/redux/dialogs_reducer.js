@@ -31,12 +31,13 @@ let initialState = {
 const dialogsReducer = function(state = initialState, action){
     switch(action.type){
         case add_message:
-            state.messages.push({id:7, message:action.message});
-            break;
+            return {
+                ...state,
+                messages: [...state.messages,{id:7, message:action.message}]
+            }
         default:
             return state;
     }
-    return state;
 }
 
 export default dialogsReducer;
