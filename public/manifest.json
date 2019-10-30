@@ -17,6 +17,11 @@
       "type": "image/png",
       "sizes": "192x192"
     }
+    {
+      "src": "preloader.svg",
+      "type": "image/svg",
+      "sizes": "192x192"
+    }
   ],
   "start_url": ".",
   "display": "standalone",

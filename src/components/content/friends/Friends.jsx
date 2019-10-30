@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './Friends.module.css'
 import * as axios from 'axios';
-
+import {connect} from 'react-redux';
+import { followChange, setFriends, changeCurrentPage, toggleIsFetching } from '../../../redux/friends_reducer';
 
 class Friends extends React.Component{
     constructor(props){
@@ -16,8 +17,10 @@ class Friends extends React.Component{
     }
     changeCurrentPage(e){
         this.props.changeCurrentPage(e.currentTarget.dataset.page);
+        this.props.toggleIsFetching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response=>{
             this.props.setFriends(response.data.items);
+            this.props.toggleIsFetching(false);
         });
     }
     render(){
@@ -29,6 +32,18 @@ class Friends extends React.Component{
         debugger;
         return(
             <div className ={s.main}>
+            {this.props.isFetching==true?<img src='preloader.svg'/>:<div>
+                {this.props.friends.map((item)=>{
+                    return (
+                        <div key={item.id} className = {s.friend}>
+                            <img src={item.photos.small==null?'avatar_friend.png':item.photos.small} align="top"/>
+                            <p>{item.name}<br/><br/>
+                            <a href="#" className={item.followed ? s.follow : s.unfollow} data-id={item.id} onClick={(e)=>{this.props.followChange(e.currentTarget.dataset.id);e.preventDefault();}}>{item.followed ? "follow" : "unfollow"}</a>
+                            </p>
+                        </div> 
+                    );
+                })}
+            </div>}
             <div className = {s.pages}>
                 {pages.map(item=>{
                     return (
@@ -36,19 +51,19 @@ class Friends extends React.Component{
                     )
                 })}
             </div>
-            {this.props.friends.map((item)=>{
-                return (
-                    <div key={item.id} className = {s.friend}>
-                        <img src={item.photos.small==null?'avatar_friend.png':item.photos.small} align="top"/>
-                        <p>{item.name}<br/><br/>
-                        <a href="#" className={item.followed ? s.follow : s.unfollow} data-id={item.id} onClick={(e)=>{this.props.followChange(e.currentTarget.dataset.id);e.preventDefault();}}>{item.followed ? "follow" : "unfollow"}</a>
-                        </p>
-                    </div> 
-                );
-            })} 
             </div>
         );  
     }
 }
 
-export default Friends;
+function mapStateToProps(state){
+    return { 
+        friends: state.friendsPage.friends,
+        pageSize: state.friendsPage.pageSize,
+        totalUsersCount: state.friendsPage.totalUsersCount,
+        currentPage: state.friendsPage.currentPage,
+        isFetching: state.friendsPage.isFetching
+    } 
+}
+
+export default connect(mapStateToProps, {followChange, setFriends, changeCurrentPage, toggleIsFetching})(Friends);

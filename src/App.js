@@ -6,9 +6,9 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Menu from './components/menu/Menu';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-import ProfileContainer from './components/content/profile/ProfileContainer';
-import DialogsContainer from './components/content/dialogs/DialogsContainer';
-import FriendsContainer from './components/content/friends/FriendsContainer'
+import Profile from './components/content/profile/Profile';
+import Dialogs from './components/content/dialogs/Dialogs';
+import Friends from './components/content/friends/Friends'
 
 
 
@@ -20,9 +20,9 @@ function App(props) {
         <Menu />
         <Header />
         <div className="content">
-            <Route path="/profile" render={()=><ProfileContainer/>}/>
-            <Route path="/dialogs" render={()=><DialogsContainer/>}/>
-            <Route path="/friends" render={()=><FriendsContainer/>}/>
+            <Route path="/profile" render={()=><Profile/>}/>
+            <Route path="/dialogs" render={()=><Dialogs/>}/>
+            <Route path="/friends" render={()=><Friends/>}/>
         </div>
         <Footer />
     </div>

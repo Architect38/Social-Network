@@ -1,7 +1,10 @@
 import React from 'react';
 import s from './Profile.module.css';
+import { addPost } from '../../../redux/profile_reducer';
+import { connect } from 'react-redux';
 import MyPosts from './my_posts/MyPosts';
 import ProfileInfo from './profile_info/ProfileInfo';
+
 
 function Profile(props){
   return (
@@ -11,4 +14,12 @@ function Profile(props){
     </div>
   );
 }
-export default Profile;
+
+
+let mapStateToProps = (state) => {
+    return {
+        posts: state.profilePage.posts
+    }
+}
+
+export default connect(mapStateToProps, {addPost})(Profile); 

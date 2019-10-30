@@ -17,6 +17,12 @@ export function changeCurrentPage(page){
         page
     }
 }
+export function toggleIsFetching(status){
+    return {
+        type: "toggleIsFetching",
+        status
+    }
+}
 //=================================================
 
 //Начальный state===================================
@@ -29,7 +35,8 @@ let initialState = {
     ],
     pageSize: 5,
     totalUsersCount: 50,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 //===================================================
 
@@ -52,6 +59,11 @@ const friendsReducer = function(state = initialState, action){
             return {
                 ...state,
                 currentPage: action.page
+            }
+        case "toggleIsFetching":
+            return {
+                ...state,
+                isFetching: action.status
             }
         default:
             return state;
