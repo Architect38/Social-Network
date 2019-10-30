@@ -1,11 +1,10 @@
-//Типы action====================================
-const add_message = "add_message";
-//===============================================
-
 //Конструкторы action============================
 
-export const addMessageActionCreator = function(message){
-    return {type:add_message, message: message}
+export const addMessage = function(message){
+    return {
+        type:"add_message", 
+        message
+    }
 }
 //=================================================
 
@@ -30,7 +29,7 @@ let initialState = {
 
 const dialogsReducer = function(state = initialState, action){
     switch(action.type){
-        case add_message:
+        case "add_message":
             return {
                 ...state,
                 messages: [...state.messages,{id:7, message:action.message}]

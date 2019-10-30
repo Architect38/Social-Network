@@ -1,22 +1,16 @@
 import Friends from './Friends';
-import { followChangeActionCreator } from './../../../redux/friends_reducer';
 import {connect} from 'react-redux';
+import { followChange, setFriends, changeCurrentPage } from '../../../redux/friends_reducer';
 
 
 function mapStateToProps(state){
     return { 
         friends: state.friendsPage.friends,
+        pageSize: state.friendsPage.pageSize,
+        totalUsersCount: state.friendsPage.totalUsersCount,
+        currentPage: state.friendsPage.currentPage
     } 
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        follow(e){
-            dispatch(followChangeActionCreator(e.currentTarget.dataset.id));
-            e.preventDefault();
-        }
-    }
-}
-
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
+const FriendsContainer = connect(mapStateToProps, {followChange, setFriends, changeCurrentPage})(Friends);
 export default FriendsContainer;

@@ -26,22 +26,20 @@
   margin: 1rem;
 }
 .post{
-  margin:1rem;
+  margin-top:1rem;
+  margin-left:2rem;
   border-radius: 1rem;
   background: #DAE8E2;
   padding: 1rem;
 }
-.avatar{
+.post img{
   width: 100px;
   height: 100px;
   border-radius: 50%;
-
 }
-.text_post{
-  display: inline;
-  position: relative;
-  top:-70px;
-  margin-left:1rem;
+.post p{
+  display: inline-block;
+  margin-left:2rem;
 }
 
 /*@keyframes move { 

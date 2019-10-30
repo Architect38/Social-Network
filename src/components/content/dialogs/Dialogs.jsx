@@ -4,7 +4,6 @@ import User from './user/User';
 import Message from './message/Message';
 
 function Dialogs(props){
-  debugger;
   return (
     <div className={s.main}>
       <div className={s.users}>

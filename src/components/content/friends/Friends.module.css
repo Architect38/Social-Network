@@ -26,3 +26,15 @@
 .unfollow{
     background-color: rgb(235, 8, 8);
 }
+.pages{
+    font-size:1.5rem;
+    margin: 1rem;
+}
+.pages span{
+    margin: 0.1rem;
+    cursor: pointer;
+}
+.currentPage{
+    font-weight: bold;
+    color: rgb(0, 52, 163);
+}
