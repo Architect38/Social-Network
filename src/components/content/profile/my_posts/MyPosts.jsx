@@ -8,7 +8,7 @@ function MyPosts(props){
     <div className={s.main}>
       <textarea placeholder="Write your Post!"  ref = {MyRef}></textarea>
       <a href="#" onClick={(e)=>{
-        props.addPost(MyRef.current.value);
+        if (MyRef.current.value!="") props.addPost(MyRef.current.value);
         e.preventDefault();
         MyRef.current.value = ""; 
       }}>
@@ -17,7 +17,7 @@ function MyPosts(props){
       {props.posts.map((item,i,arr)=>{
         return(
           <div key = {arr[arr.length-i-1].id} className = {s.post}>
-            <img src='avatar.jpg' align='top'/>
+            <img src={`/avatar.jpg`} align='top'/>
             <p>{arr[arr.length-i-1].post}</p>
           </div>
         );

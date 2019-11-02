@@ -3,6 +3,7 @@ import s from './Friends.module.css'
 import * as axios from 'axios';
 import {connect} from 'react-redux';
 import { followChange, setFriends, changeCurrentPage, toggleIsFetching } from '../../../redux/friends_reducer';
+import {NavLink} from 'react-router-dom';
 
 class Friends extends React.Component{
     constructor(props){
@@ -36,9 +37,11 @@ class Friends extends React.Component{
                 {this.props.friends.map((item)=>{
                     return (
                         <div key={item.id} className = {s.friend}>
-                            <img src={item.photos.small==null?'avatar_friend.png':item.photos.small} align="top"/>
+                            <NavLink to={`/profile/${item.id}`}>
+                                <img src={item.photos.small==null?'/avatar_friend.png':item.photos.small} align="top"/>
+                            </NavLink>
                             <p>{item.name}<br/><br/>
-                            <a href="#" className={item.followed ? s.follow : s.unfollow} data-id={item.id} onClick={(e)=>{this.props.followChange(e.currentTarget.dataset.id);e.preventDefault();}}>{item.followed ? "follow" : "unfollow"}</a>
+                            <a href="#" className={`${s.btnFollow} ${item.followed ? s.follow : s.unfollow}`} data-id={item.id} onClick={(e)=>{this.props.followChange(e.currentTarget.dataset.id);e.preventDefault();}}>{item.followed ? "follow" : "unfollow"}</a>
                             </p>
                         </div> 
                     );

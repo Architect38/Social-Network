@@ -13,7 +13,7 @@
 .friend p{
     display: inline-block;
 }
-.friend a{
+.friend .btnFollow{
     text-decoration: none;
     border:0.02rem solid black;
     padding: 0.2rem;

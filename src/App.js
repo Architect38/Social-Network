@@ -20,7 +20,7 @@ function App(props) {
         <Menu />
         <Header />
         <div className="content">
-            <Route path="/profile" render={()=><Profile/>}/>
+            <Route path="/profile/:userid?" render={()=><Profile/>}/>
             <Route path="/dialogs" render={()=><Dialogs/>}/>
             <Route path="/friends" render={()=><Friends/>}/>
         </div>
