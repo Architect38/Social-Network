@@ -1,6 +1,44 @@
 .main{
-    grid-area: h;
-    background: linear-gradient(#20beb1a1, #555555);
-    border-radius: 1rem;
-    margin-top: 1rem;
+    display:grid;
+    grid-template-columns: 6fr 1fr;
+    margin: 2rem;
+    margin-left: 0rem;
+}
+.logo a{ 
+   text-decoration: none; 
+   position: relative;
+}
+.logo a:hover{
+    top: -5px;
+}
+.logo a img{
+    width: 80px;
+    height: 80px;
+}
+.logo a span{
+    position: relative;
+    left: 1rem;
+    text-shadow: 2px 2px 2px #8E46CE;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2ABFB4;
+}
+.login a{
+    position: relative;
+    margin: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.login a:hover{
+   top: -5px;
+   cursor: pointer;
+}
+.login p{
+    font-size: 1rem;
+    margin-left: 1rem;
+    position: relative;
+    top:-1rem;
+    cursor: pointer;
+    color: #2ABFB4;
+
 }

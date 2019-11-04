@@ -11,6 +11,12 @@ export const setProfileInfo = function(profileInfo){
         profileInfo
     }
 }
+export function toggleIsFetching(status){
+    return {
+        type: "toggleIsFetching",
+        status
+    }
+}
 //==================================================
 
 //Начальный state===================================
@@ -20,7 +26,8 @@ let initialState = {
         {id:1, post:"Post#1", status:"added"},
         {id:2, post:"Post#2", status:"added"},
         {id:3, post:"Post#3", status:"added"},
-    ]
+    ],
+    isFetching: false
 }
 //===================================================
 
@@ -35,6 +42,11 @@ const profileReducer = function(state = initialState,action){ //При изме�
             return {      
                 ...state,
                 info: action.profileInfo
+            }
+        case "toggleIsFetching":
+            return {
+                ...state,
+                isFetching: action.status
             }
         default:
             return state;

@@ -1,24 +1,20 @@
-.menu{
-    grid-area: m;
-    margin-left:1rem;
-}
-.menu div{
+.main div{
     margin-top:1rem;
     text-align: center;
     border: 0.02rem solid black;
 }
-.menu div a{
+.main div a{
     text-decoration: none;
     display:block;
     padding: 1rem;
     color: black;
     font-size: 1rem;
 }
-.menu div a:hover {
+.main div a:hover {
     background-color: #555555;
     color: white;
   }
-  .menu div a.activeLink {
-      background-color: #555555;
-      color: white;
-  }
+.main div a.activeLink {
+    background-color: #555555;
+    color: white;
+}

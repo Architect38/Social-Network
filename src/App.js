@@ -17,14 +17,20 @@ function App(props) {
   return (
     <BrowserRouter>
     <div className="App">
-        <Menu />
-        <Header />
+        <div className="menu">
+          <Menu />
+        </div>
+        <div className="header">
+          <Header />
+        </div>
         <div className="content">
             <Route path="/profile/:userid?" render={()=><Profile/>}/>
             <Route path="/dialogs" render={()=><Dialogs/>}/>
             <Route path="/friends" render={()=><Friends/>}/>
         </div>
-        <Footer />
+        <div className="footer">
+          <Footer />
+        </div>
     </div>
     </BrowserRouter>
   );

@@ -4,7 +4,7 @@
 .friend{
    margin-top:1rem; 
 }
-.friend img{
+.friend .avatar{
     
     width: 100px;
     height: 100px;
@@ -26,6 +26,12 @@
 .unfollow{
     background-color: rgb(235, 8, 8);
 }
+.friend .followPreloader{
+    width: 30x;
+    height: 30px;
+}
+
+
 .pages{
     font-size:1.5rem;
     margin: 1rem;

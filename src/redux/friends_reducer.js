@@ -23,20 +23,22 @@ export function toggleIsFetching(status){
         status
     }
 }
+export function toggleIsFollowFetching(id){
+    return {
+        type: "toggleIsFollowFetching",
+        id
+    }
+}
 //=================================================
 
 //Начальный state===================================
 let initialState = {
-    friends: [
-        // {id:1, firstName:"Andrew", lastName:"Kuznetsov", follow:true},
-        // {id:2, firstName:"Katya", lastName:"Petrova", follow:false},
-        // {id:3, firstName:"Nastya", lastName:"Catcher", follow:false},
-        // {id:4, firstName:"Peter", lastName: "Ivanov", follow:true}
-    ],
+    friends: [],
     pageSize: 5,
     totalUsersCount: 50,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    isFollowFetching: [],
 }
 //===================================================
 
@@ -45,8 +47,8 @@ const friendsReducer = function(state = initialState, action){
         case "followChange":
             return {
                 ...state,
-                friends: [...state.friends].map((item)=>{
-                    if(item.id==action.id) return {...item, follow: item.followed = item.followed?false:true}
+                friends: [...state.friends].map(item=>{
+                    if (action.id==item.id) return {...item, followed: item.followed==true?false:true}
                     return item;
                 })
             }
@@ -64,6 +66,14 @@ const friendsReducer = function(state = initialState, action){
             return {
                 ...state,
                 isFetching: action.status
+            }
+        case "toggleIsFollowFetching":
+            return {
+                ...state,
+                isFollowFetching: [...state.isFollowFetching].some(r=>{return r==action.id})===true
+                ?[...state.isFollowFetching].filter(r=>{return r!=action.id})
+                :[...state.isFollowFetching, action.id]
+                
             }
         default:
             return state;
