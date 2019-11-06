@@ -26,7 +26,12 @@
       "src": "logo.png",
       "type": "image/svg",
       "sizes": "192x192"
-    }
+    },
+    {
+      "src": "search_header.png",
+      "type": "image/svg",
+      "sizes": "192x192"
+    },
   ],
   "start_url": ".",
   "display": "standalone",

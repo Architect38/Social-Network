@@ -23,4 +23,10 @@ export const usersAPI = {
     }
 }
 
-
+export const authAPI = {
+    getLogin(){
+        return instance.get("auth/me").then(response=>{
+            return response.data; 
+        });
+    }
+}

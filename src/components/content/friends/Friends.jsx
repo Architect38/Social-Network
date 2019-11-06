@@ -1,9 +1,8 @@
 import React from 'react';
 import s from './Friends.module.css'
 import {connect} from 'react-redux';
-import { followChange, setFriends, changeCurrentPage, toggleIsFetching, toggleIsFollowFetching } from '../../../redux/friends_reducer';
+import { follow, getUsers, changeCurrentPage } from '../../../redux/friends_reducer';
 import {NavLink} from 'react-router-dom';
-import { usersAPI } from '../../../api/api';
 
 class Friends extends React.Component{
     constructor(props){
@@ -13,32 +12,17 @@ class Friends extends React.Component{
         
     }
     componentDidMount(){
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data=>{
-            this.props.setFriends(data.items);
-            this.props.toggleIsFetching(false);
-        });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
     changeCurrentPage(e){
         this.props.changeCurrentPage(e.currentTarget.dataset.page);
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data=>{
-            this.props.setFriends(data.items);
-            this.props.toggleIsFetching(false);
-        });
-        
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+          
     }
     followChange(e){
         let id = e.currentTarget.dataset.id; //id пользователя
-        this.props.toggleIsFollowFetching(id); //включаем preloader
-        if (e.currentTarget.text=="unfollow") usersAPI.follow(id).then(response=>{
-            this.props.toggleIsFollowFetching(id); //выключаем preloader
-            if (response.data.resultCode==0) this.props.followChange(id); //если ответ сервера положительный, меняем состояние
-        });
-        if (e.currentTarget.text=="follow") usersAPI.unfollow(id).then(response=>{
-            this.props.toggleIsFollowFetching(id);
-            if (response.data.resultCode==0) this.props.followChange(id);
-        });
+        let status = e.currentTarget.text; //follow/unfollow
+        this.props.follow(id, status);
         e.preventDefault();
     }
     render(){
@@ -60,7 +44,6 @@ class Friends extends React.Component{
                             {this.props.isFollowFetching.some(r=>{return r==item.id})==false?<a href="#" className={`${s.btnFollow} ${item.followed ? s.follow : s.unfollow}`} data-id={item.id} onClick={this.followChange}>
                                 {item.followed ? "follow" : "unfollow"}
                             </a>:<img className = {s.followPreloader} src="/preloader.svg"/>}
-                            
                             </p>
                         </div> 
                     );
@@ -89,4 +72,4 @@ function mapStateToProps(state){
     } 
 }
 
-export default connect(mapStateToProps, {followChange, setFriends, changeCurrentPage, toggleIsFetching, toggleIsFollowFetching})(Friends);
+export default connect(mapStateToProps, {getUsers, follow, changeCurrentPage})(Friends);

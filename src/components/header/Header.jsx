@@ -2,14 +2,13 @@ import React from 'react';
 import s from './Header.module.css';
 import {NavLink} from 'react-router-dom';
 import { connect } from 'react-redux';
-import {loginUser} from './../../redux/auth_reducer'
-import * as axios from 'axios';
+import {getLogin} from './../../redux/auth_reducer'
+
+
 
 class Header extends React.Component{
-  componentDidMount(){ //{withCredentials:true} брать куку из браузера(т.е. если я своем браузере залогинен, то пройду auth)
-    axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {withCredentials:true}).then(response=>{
-      this.props.loginUser(response.data);
-    });
+  componentDidMount(){
+    this.props.getLogin();
   }
   render(){
     return (
@@ -19,6 +18,10 @@ class Header extends React.Component{
               <img src="/logo.png" align="top"/>
               <span>SocialKek</span>
           </NavLink>
+        </div>
+        <div className={s.search}>
+            <input type="text" placeholder="Искать здесь..."/>
+            <img src = "/search_header.png"/>
         </div>
         <div className={s.login}>
             {this.props.isAuth==false?<a>Login</a>:<a>{this.props.dataProfile.data.login}</a>}
@@ -36,4 +39,4 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{loginUser})(Header);
+export default connect(mapStateToProps,{getLogin})(Header);

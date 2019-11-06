@@ -1,3 +1,5 @@
+import { authAPI } from "../api/api";
+
 //Конструкторы action============================
 
 export const loginUser = function(dataProfile){
@@ -7,6 +9,14 @@ export const loginUser = function(dataProfile){
     }
 }
 //=================================================
+export const getLogin = ()=>{
+    return (dispatch)=>{
+        authAPI.getLogin().then(data=>{
+            dispatch(loginUser);
+        });
+    }
+}
+
 
 //Начальный state===================================
 let initialState = {

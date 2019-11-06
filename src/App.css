@@ -1,6 +1,6 @@
 .App{
     display: grid;
-    grid-template-rows: 8rem 30rem minmax(1rem, 1fr) 4rem;
+    grid-template-rows: 8rem 30rem auto 4rem;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 1%;
     grid-template-areas: "h h h h h h h h h h h h"
@@ -28,5 +28,5 @@
 }
 .footer{
     grid-area: f;
-    background:gold;    
+    background:rgba(19, 10, 10, 0.568);    
 }
