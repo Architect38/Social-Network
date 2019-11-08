@@ -1,22 +1,44 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
-import * as axios from 'axios';
+import Status from './status/Status';
+
 
 class ProfileInfo extends React.Component{
-  componentDidMount(){
-    this.props.toggleIsFetching(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.urlUserId==undefined?2:this.props.urlUserId}`).then(response=>{
-      this.props.setProfileInfo(response.data);
-      this.props.toggleIsFetching(false);
-    });
+  constructor(props){
+    super(props);
+    this.state = {
+      myProfile: false,
+    }
+
   }
+  componentDidMount(){
+    let id;
+    this.props.urlUserId==undefined?id = this.props.myId:id = this.props.urlUserId;
+    this.setState({myProfile: id===this.props.myId?true:false});
+    this.props.getProfile(id);
+    this.props.getStatus(id);
+  }
+
   render(){
+    let avatar = this.props.profileInfo==null||this.props.profileInfo.photos.large==null
+      ? "/avatar_friend.png"
+      : this.props.profileInfo.photos.large;
     return(
       <div className={s.main}>
-        <div className={s.avatar}>{this.props.isFetching==false?<img src={this.props.info==null||this.props.info.photos.large==null?"/avatar_friend.png":this.props.info.photos.large}/>:<img src="/preloader.svg"/>}</div>
-        {this.props.info!=null?<div className={s.description}>
-          <span>{this.props.info.fullName}</span>
-        </div>:<div>нет данных</div>}
+        <div className={s.avatar}>
+            {
+              this.props.isFetching===false
+              ?<img src={avatar}/>
+              :<img src="/preloader.svg"/>
+            }
+        </div>
+        {
+          this.props.profileInfo!=null&&
+            <div className={s.description}>
+              <span className={s.name}>{this.props.profileInfo.fullName}</span>
+              <Status status = {this.props.status} myProfile = {this.state.myProfile}/>
+            </div>
+        }
       </div>
     );
   }

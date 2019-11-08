@@ -1,34 +1,35 @@
 import { usersAPI } from './../api/api';
 
 //Конструкторы action-объектов============================
-export function followChange(id){
+function followChange(id){
     return {
         type: "followChange",
         id: id
     }
 }
-export function setFriends(arr){
+function setFriends(arr){
     return {
         type: "setFriends",
         arr
     }
 }
-export function changeCurrentPage(page){
-    return {
-        type: "changeCurrentPage",
-        page
-    }
-}
-export function toggleIsFetching(status){
+function toggleIsFetching(status){
     return {
         type: "toggleIsFetching",
         status
     }
 }
-export function toggleIsFollowFetching(id){
+function toggleIsFollowFetching(id){
     return {
         type: "toggleIsFollowFetching",
         id
+    }
+}
+
+export function changeCurrentPage(page){
+    return {
+        type: "changeCurrentPage",
+        page
     }
 }
 //=================================================
@@ -51,6 +52,7 @@ export const follow = (id, status)=>{
             if (response.data.resultCode==0) dispatch(followChange(id)); //если ответ сервера положительный, меняем состояние
         },er=>{dispatch(toggleIsFollowFetching(id));});
         if (status=="follow") usersAPI.unfollow(id).then(response=>{
+            dispatch(toggleIsFollowFetching(id)); //выключаем preloader
             if (response.data.resultCode==0) dispatch(followChange(id));
         });
     }

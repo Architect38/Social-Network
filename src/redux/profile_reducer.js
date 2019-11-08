@@ -1,27 +1,55 @@
+import {profileAPI} from './../api/api';
+
 //Конструкторы action============================
-export const addPost = function(newPost){
+const setProfile = (profileInfo)=>{
+    return {
+        type: "setProfile", 
+        profileInfo
+    }
+}
+const setStatus = (status)=>{
+    return {
+        type: "setStatus", 
+        status
+    }
+}
+const changeFetching = (status)=>{
+    return {
+        type: "changeFetching",
+        status
+    }
+}
+export const addPost = (newPost)=>{
     return {
         type: "add_post", 
         newPost
     }
 }
-export const setProfileInfo = function(profileInfo){
-    return {
-        type: "set_profile", 
-        profileInfo
-    }
-}
-export function toggleIsFetching(status){
-    return {
-        type: "toggleIsFetching",
-        status
-    }
-}
 //==================================================
+export const getProfile = (id)=>{
+    return (dispatch)=>{
+        dispatch(changeFetching(true));
+        profileAPI.getProfile(id).then(data=>{
+            dispatch(changeFetching(false));
+            dispatch(setProfile(data));
+        });
+    }
+}
+
+export const getStatus = (id)=>{
+    return (dispatch)=>{
+        profileAPI.getStatus(id).then(data=>{
+            dispatch(setStatus(data));
+        });
+    }
+}
+
+
 
 //Начальный state===================================
 let initialState = {
-    info: null,
+    profileInfo: null,
+    status:"",
     posts: [
         {id:1, post:"Post#1", status:"added"},
         {id:2, post:"Post#2", status:"added"},
@@ -38,12 +66,17 @@ const profileReducer = function(state = initialState,action){ //При изме�
                 ...state, //свойства от изначального объекта
                 posts: [...state.posts, {id:8, post: action.newPost, status:"added" }] //перезаписываем posts, где добавляем новый пост
             }
-        case "set_profile": 
+        case "setProfile":
             return {      
                 ...state,
-                info: action.profileInfo
+                profileInfo: action.profileInfo
             }
-        case "toggleIsFetching":
+        case "setStatus":
+                return {      
+                    ...state,
+                    status: action.status
+                }
+        case "changeFetching":
             return {
                 ...state,
                 isFetching: action.status

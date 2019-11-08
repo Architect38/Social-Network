@@ -1,15 +1,9 @@
 import React from 'react';
 import s from './Header.module.css';
 import {NavLink} from 'react-router-dom';
-import { connect } from 'react-redux';
-import {getLogin} from './../../redux/auth_reducer'
-
-
+import {connect} from 'react-redux';
 
 class Header extends React.Component{
-  componentDidMount(){
-    this.props.getLogin();
-  }
   render(){
     return (
       <div className={s.main}>    
@@ -24,8 +18,8 @@ class Header extends React.Component{
             <img src = "/search_header.png"/>
         </div>
         <div className={s.login}>
-            {this.props.isAuth==false?<a>Login</a>:<a>{this.props.dataProfile.data.login}</a>}
-            {this.props.isAuth==true?<p>(выйти)</p>:""}
+            <a>{this.props.dataProfile.data.login}</a>
+            <p>(выйти)</p>
         </div>
       </div>
     )
@@ -34,9 +28,8 @@ class Header extends React.Component{
 
 let mapStateToProps = (state) => {
   return {
-      isAuth: state.auth.isAuth,
       dataProfile: state.auth.dataProfile
   }
 }
 
-export default connect(mapStateToProps,{getLogin})(Header);
+export default connect(mapStateToProps)(Header);

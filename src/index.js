@@ -8,7 +8,7 @@ import {Provider} from 'react-redux'; //С помощью провайдера �
 
 
 ReactDOM.render(
-    <Provider store = {store}> 
+    <Provider store = {store}>
         <App/> 
     </Provider>,
     document.getElementById('root')

@@ -1,0 +1,21 @@
+.status{
+    cursor: pointer;
+  }
+.status:hover{
+    color:#2ABFB4;
+}
+.editStatus span{
+  margin-left: 0.5rem;
+  border: 0.02rem solid black;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  cursor: pointer;
+}
+.editStatus span:nth-child(3n){
+    margin-left: 0.2rem;
+}
+.editStatus span:hover{
+  background-color: #555555;
+  color: white;
+}
+  
