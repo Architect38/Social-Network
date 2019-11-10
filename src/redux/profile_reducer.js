@@ -44,6 +44,14 @@ export const getStatus = (id)=>{
     }
 }
 
+export const updateStatus = (status)=>{
+    return (dispatch)=>{
+        profileAPI.updateStatus(status).then(response=>{
+            dispatch(setStatus(status));
+        });
+    }
+}
+
 
 
 //Начальный state===================================

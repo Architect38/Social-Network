@@ -24,9 +24,9 @@ class App extends React.Component {
       <BrowserRouter>
       { 
         this.props.authFetching==true?<img src="/preloader.svg"/>:
-        this.props.isAuth==false?<Login/>:
+        this.props.isAuth===true?<Login/>:
         <div className="App">
-            <div className="menu">
+            {/* <div className="menu">
               <Menu />
             </div>
             <div className="header">
@@ -39,7 +39,7 @@ class App extends React.Component {
             </div>
             <div className="footer">
               <Footer />
-            </div>
+            </div> */}
         </div>
       }
       </BrowserRouter>

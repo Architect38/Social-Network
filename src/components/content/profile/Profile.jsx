@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Profile.module.css';
-import { addPost, getProfile, getStatus } from '../../../redux/profile_reducer';
+import { addPost, getProfile, getStatus, updateStatus } from '../../../redux/profile_reducer';
 import { connect } from 'react-redux';
 import MyPosts from './my_posts/MyPosts';
 import ProfileInfo from './profile_info/ProfileInfo';
@@ -12,7 +12,7 @@ function Profile(props){
       <ProfileInfo 
         getStatus = {props.getStatus} status = {props.status} myId = {props.myId} isFetching = {props.isFetching} 
         profileInfo = {props.profileInfo} getProfile={props.getProfile} 
-        urlUserId = {props.match.params.userid} />
+        urlUserId = {props.match.params.userid} updateStatus = {props.updateStatus}/>
       <MyPosts posts = {props.posts} addPost={props.addPost}/>
     </div>
   );
@@ -30,4 +30,4 @@ let mapStateToProps = (state) => {
 }
 
 let urlRouterContainer = withRouter(Profile);
-export default connect(mapStateToProps, {addPost, getProfile, getStatus})(urlRouterContainer); 
+export default connect(mapStateToProps, {addPost, getProfile, getStatus, updateStatus})(urlRouterContainer); 

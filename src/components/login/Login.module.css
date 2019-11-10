@@ -1,0 +1,91 @@
+.main{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(to top left, powderblue, pink);  */
+    background-image: url("https://images.wallpaperscraft.ru/image/ozero_bereg_dom_150918_1920x1080.jpg");
+    filter: blur(7px);
+    background-size: 100%;
+     
+}
+.formOut{
+    position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    margin: auto;
+    height: 300px;
+    width: 30%;
+    max-width: 500px;
+    min-width: 500px;
+    box-shadow: 0 0 10px -5px;
+    background:white;
+    
+}
+form{
+    width:50%;
+    margin:auto;
+    margin-top:30px;
+}
+.logo{
+    text-align: center;
+}
+.logo img{
+    height: 50px;
+    width: 50px;
+}
+.logo span{
+    position: relative;
+    left: 0.5rem;
+    text-shadow: 2px 2px 2px #8E46CE;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2ABFB4;
+}
+
+input{
+    font-size: 0.9rem;
+}
+input[name=login]{
+   width: 100%; 
+   margin-top:1rem;
+   border: 2px solid #2ABFB4;
+   border-radius: 5%;
+   padding: 0.3rem;
+}
+input[name=password]{
+    width: 100%; 
+    margin-top: 0.2rem;
+    border: 2px solid #2ABFB4;
+    border-radius: 5%;
+    padding: 0.3rem;
+}
+input[name=rememberMe]{
+    margin-top:0.5rem;
+    font-size: 0.9rem;
+}
+
+p{
+    font-size: 0.9rem;
+}
+p a{
+   color:#2ABFB4; 
+   text-decoration: underline;
+}
+p a:hover{
+    color: black;
+    cursor: pointer;
+}
+button{
+    background: none;
+    border: 1px solid black;
+    background: powderblue;
+	padding: 0.3rem;
+	cursor: pointer;
+    outline: inherit;
+    font-size: 0.9rem;
+    float: right;
+}

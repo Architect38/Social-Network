@@ -10,6 +10,7 @@ class ProfileInfo extends React.Component{
       myProfile: false,
     }
 
+
   }
   componentDidMount(){
     let id;
@@ -18,7 +19,6 @@ class ProfileInfo extends React.Component{
     this.props.getProfile(id);
     this.props.getStatus(id);
   }
-
   render(){
     let avatar = this.props.profileInfo==null||this.props.profileInfo.photos.large==null
       ? "/avatar_friend.png"
@@ -36,7 +36,7 @@ class ProfileInfo extends React.Component{
           this.props.profileInfo!=null&&
             <div className={s.description}>
               <span className={s.name}>{this.props.profileInfo.fullName}</span>
-              <Status status = {this.props.status} myProfile = {this.state.myProfile}/>
+              <Status status = {this.props.status} myProfile = {this.state.myProfile} updateStatus = {this.props.updateStatus}/>
             </div>
         }
       </div>

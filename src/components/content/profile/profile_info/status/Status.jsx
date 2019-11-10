@@ -13,11 +13,16 @@ class Status extends React.Component{
         this.cansel = this.cansel.bind(this);
         this.changeStatus = this.changeStatus.bind(this);
     }
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.status!=this.props.status) this.setState({status: this.props.status});
+    }
     editStatus(e){
         this.setState({mode:"edit"});
     }
     saveStatus(e){
         this.setState({mode:"view"});
+        this.props.updateStatus(this.state.status);
+
     }
     cansel(e){
         this.setState({mode:"view"});
@@ -26,7 +31,7 @@ class Status extends React.Component{
         this.setState({status: e.currentTarget.value});
     }
     render(){
-        let myStatus = this.props.status===null
+        let myStatus = this.props.status===null||this.props.status===""
             ? "Изменить статус"
             : this.props.status
         return (
