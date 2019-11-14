@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import MyPosts from './my_posts/MyPosts';
 import ProfileInfo from './profile_info/ProfileInfo';
 import {withRouter} from 'react-router-dom';
+import authRedirect from '../../HOC/authRedirect';
 
 function Profile(props){
   return (
@@ -29,5 +30,5 @@ let mapStateToProps = (state) => {
     }
 }
 
-let urlRouterContainer = withRouter(Profile);
+let urlRouterContainer = withRouter(authRedirect(Profile));
 export default connect(mapStateToProps, {addPost, getProfile, getStatus, updateStatus})(urlRouterContainer); 

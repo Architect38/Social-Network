@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route, BrowserRouter} from 'react-router-dom';
 import { getLogin } from './redux/auth_reducer';
 import {connect} from 'react-redux';
-
+import authRedirect from './components/HOC/authRedirect'
+import {Redirect} from 'react-router-dom';
 //import { domainToASCII } from 'url';
-
 import Menu from './components/menu/Menu';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
@@ -20,30 +20,33 @@ class App extends React.Component {
     this.props.getLogin();
   }
   render(){
-    return (
+    return(
       <BrowserRouter>
-      { 
-        this.props.authFetching==true?<img src="/preloader.svg"/>:
-        this.props.isAuth===true?<Login/>:
-        <div className="App">
-            {/* <div className="menu">
-              <Menu />
-            </div>
-            <div className="header">
-              <Header />
-            </div>
-            <div className="content">
-                <Route path="/profile/:userid?" render={()=><Profile/>}/>
-                <Route path="/dialogs" render={()=><Dialogs/>}/>
-                <Route path="/friends" render={()=><Friends/>}/>
-            </div>
-            <div className="footer">
-              <Footer />
-            </div> */}
-        </div>
-      }
-      </BrowserRouter>
-    );
+        { 
+          this.props.authFetching===true
+           ? <img src="/preloader"/>
+           : this.props.isAuth===false
+              ? <Login/>
+              : <div className="App">
+                    <div className="menu">
+                      <Menu />
+                    </div>
+                    <div className="header">
+                      <Header />
+                    </div>
+                    <div className="content">
+                        <Route path="/profile/:userid?" render={()=><Profile/>}/>
+                        <Route path="/dialogs" render={()=><Dialogs/>}/>
+                        <Route path="/friends" render={()=><Friends/>}/>
+                    </div>
+                    <div className="footer">
+                      <Footer />
+                    </div>
+                </div>
+          
+        }
+      </BrowserRouter>     
+    ); 
   }
 }
 
@@ -53,5 +56,4 @@ let mapStateToProps = (state) => {
       authFetching: state.auth.authFetching
   }
 }
-
 export default connect(mapStateToProps,{getLogin})(App);

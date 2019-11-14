@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Header.module.css';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { logout } from '../../redux/auth_reducer';
 
 class Header extends React.Component{
   render(){
@@ -19,7 +20,7 @@ class Header extends React.Component{
         </div>
         <div className={s.login}>
             <a>{this.props.dataProfile.data.login}</a>
-            <p>(выйти)</p>
+            <p onClick = {this.props.logout}>(выйти)</p>
         </div>
       </div>
     )
@@ -32,4 +33,4 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, {logout})(Header);
