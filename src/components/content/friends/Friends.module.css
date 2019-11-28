@@ -30,18 +30,19 @@
     width: 30x;
     height: 30px;
 }
-
-
 .pages{
-    font-size:1.5rem;
-    margin: 1rem;
-    margin-top: 2rem;
+    list-style-type: none;
+    text-align: center;
 }
-.pages span{
-    margin: 0.1rem;
+.pages li{
+    display: inline-block;
+    margin-left: 1rem;
+}
+.pages li a{
+    outline: inherit;
     cursor: pointer;
-}
-.currentPage{
-    font-weight: bold;
-    color: rgb(0, 52, 163);
+} 
+.activePage{
+    padding:0.5rem;
+    background: #2ABFB4;
 }

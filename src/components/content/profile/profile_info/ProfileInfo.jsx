@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css';
 import Status from './status/Status';
 
 
+
 class ProfileInfo extends React.Component{
   constructor(props){
     super(props);

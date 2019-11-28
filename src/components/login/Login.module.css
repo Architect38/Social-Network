@@ -18,7 +18,7 @@
 	left: 0;
 	right: 0;
     margin: auto;
-    height: 300px;
+    height: 320px;
     width: 30%;
     max-width: 500px;
     min-width: 500px;
@@ -54,14 +54,14 @@ input{
 input[name=login]{
    width: 100%; 
    margin-top:1rem;
-   border: 2px solid #2ABFB4;
+   /* border: 2px solid #2ABFB4; */
    border-radius: 5%;
    padding: 0.3rem;
 }
 input[name=password]{
     width: 100%; 
     margin-top: 0.2rem;
-    border: 2px solid #2ABFB4;
+    /* border: 2px solid #2ABFB4; */
     border-radius: 5%;
     padding: 0.3rem;
 }
@@ -81,13 +81,17 @@ p a:hover{
     color: black;
     cursor: pointer;
 }
+.errorMessage{
+    color: red;
+}
+
 button{
     background: none;
+    outline: inherit;
     border: 1px solid black;
     background: powderblue;
 	padding: 0.3rem;
 	cursor: pointer;
-    outline: inherit;
     font-size: 0.9rem;
     float: right;
 }

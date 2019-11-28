@@ -3,8 +3,7 @@ import './App.css';
 import {Route, BrowserRouter} from 'react-router-dom';
 import { getLogin } from './redux/auth_reducer';
 import {connect} from 'react-redux';
-import authRedirect from './components/HOC/authRedirect'
-import {Redirect} from 'react-router-dom';
+
 //import { domainToASCII } from 'url';
 import Menu from './components/menu/Menu';
 import Footer from './components/footer/Footer';
@@ -24,7 +23,7 @@ class App extends React.Component {
       <BrowserRouter>
         { 
           this.props.authFetching===true
-           ? <img src="/preloader"/>
+           ? <img src="/preloader.svg"/>
            : this.props.isAuth===false
               ? <Login/>
               : <div className="App">

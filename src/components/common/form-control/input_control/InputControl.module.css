@@ -1,0 +1,11 @@
+.messageError{
+    font-size: 0.8rem;
+    color: red;
+}
+.error{
+    border: 2px solid red;
+}
+
+input{
+    border: 2px solid #2ABFB4;
+}

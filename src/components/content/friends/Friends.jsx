@@ -3,21 +3,23 @@ import s from './Friends.module.css'
 import {connect} from 'react-redux';
 import { follow, getUsers, changeCurrentPage } from '../../../redux/friends_reducer';
 import {NavLink} from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
 class Friends extends React.Component{
     constructor(props){
         super(props); 
-        this.changeCurrentPage = this.changeCurrentPage.bind(this);
         this.followChange = this.followChange.bind(this);
-        
+        this.changeCurrentPage = this.changeCurrentPage.bind(this);
     }
     componentDidMount(){
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
     changeCurrentPage(e){
-        this.props.changeCurrentPage(e.currentTarget.dataset.page);
-        this.props.getUsers(this.props.currentPage, this.props.pageSize);
-          
+         this.props.changeCurrentPage(e.selected+1);
+         
+    }
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.currentPage!=this.props.currentPage) this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
     followChange(e){
         let id = e.currentTarget.dataset.id; //id пользователя
@@ -27,10 +29,6 @@ class Friends extends React.Component{
     }
     render(){
         let pagesCount = Math.ceil(this.props.totalUsersCount/this.props.pageSize);
-        let pages = [];
-        for (let i=1;i<=pagesCount;i++){
-            pages.push(i);
-        }
         return(
             <div className ={s.main}>
             {this.props.isFetching==true?<img src='/preloader.svg'/>:<div>
@@ -49,13 +47,21 @@ class Friends extends React.Component{
                     );
                 })}
             </div>}
-            <div className = {s.pages}>
-                {pages.map(item=>{
-                    return (
-                        <span data-page={item} className ={this.props.currentPage==item && s.currentPage} onClick={this.changeCurrentPage}>{item}</span>
-                    )
-                })}
-            </div>
+            <ReactPaginate
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={pagesCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={this.changeCurrentPage}
+                    containerClassName={s.pages}
+                    pageClassName={s.page}
+                    previousClassName={s.previous}
+                    nextClassName={s.next}
+                    activeClassName={s.activePage}
+                 />
             </div>
         );  
     }

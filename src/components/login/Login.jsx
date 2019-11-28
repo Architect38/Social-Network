@@ -3,7 +3,10 @@ import s from './Login.module.css';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { postLogin } from '../../redux/auth_reducer';
+import { required, minLength } from './../../utils/validators';
+import InputControl from './../common/form-control/input_control/InputControl'
 
+const minLength5 = minLength(5);
 const LoginForm =(props)=>{
     return(
         <form onSubmit={props.handleSubmit}>
@@ -12,10 +15,12 @@ const LoginForm =(props)=>{
                 <span>SocialKek</span>
             </div>
             <div>
-                <Field placeholder="login" name = "login" component="input"/> 
+                <Field placeholder="login" name = "login" component={InputControl}
+                validate = {[required, minLength5]}/> 
             </div>
             <div>
-                <Field placeholder="password" name="password" component="input"/> 
+                <Field placeholder="password" name="password" component={InputControl}
+                validate = {[required]}/> 
             </div>
             <div>
                 <Field name="rememberMe" component="input" type="checkbox"/>
@@ -29,6 +34,7 @@ const LoginForm =(props)=>{
                     :<img src="/preloader"/>
                 }
             </div>
+            {props.error && <div className = {s.errorMessage}>{props.error}</div> }
         </form>
     );
 }

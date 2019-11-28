@@ -1,5 +1,5 @@
 import { authAPI } from "../api/api";
-
+import {stopSubmit} from 'redux-form';
 //Action=================================================
 const setUser = (dataProfile)=>{
     return {
@@ -29,7 +29,10 @@ export const postLogin = (login,password,rememberMe)=>{
         dispatch(changeAuthFetching(true));
         authAPI.postLogin(login,password,rememberMe).then(data=>{
             if (data.data.resultCode===0) dispatch(getLogin());
-            else dispatch(changeAuthFetching(false));
+            else {
+                dispatch(changeAuthFetching(false));
+                dispatch (stopSubmit("login", {_error:"Login or password is incorrect"}));
+            }
         });
     }
 }
