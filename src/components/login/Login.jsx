@@ -26,6 +26,14 @@ const LoginForm =(props)=>{
                 <Field name="rememberMe" component="input" type="checkbox"/>
                 <span>Remember me</span> 
             </div>
+            {
+                props.captchaUrl!=null
+                &&<div>
+                    <img src={props.captchaUrl}/>
+                    <Field name="captcha" component="input" type="input"/>
+                  </div>
+            }
+            
             <p>No account? You can create an <a>account</a></p>
             <div>
                 {
@@ -45,25 +53,22 @@ const Login = (props)=>{
 
     const onSubmit = (formData)=>{
         //console.log(formData);
-        props.postLogin(formData.login, formData.password, formData.rememberMe=false)
+        props.postLogin(formData.login, formData.password, formData.rememberMe=false, formData.captcha)
     }
     return(
-        
         <div>
-        <div className = {s.main}>
-        </div>
-        <div className = {s.formOut}>
-            <LoginReduxForm authFetching = {props.authFetching} onSubmit = {onSubmit}/>
-        </div>
-        </div>
-        
+            <div className = {s.main}></div>
+            <div className = {s.formOut} style={props.captchaUrl!=null?{height:"450px"}:{}}>
+                <LoginReduxForm captchaUrl = {props.captchaUrl} authFetching = {props.authFetching} onSubmit = {onSubmit}/>
+            </div>
+        </div>  
     );
 }
 
 let mapStateToProps = (state) => {
     return {
         authFetching: state.auth.authFetching,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 export default connect(mapStateToProps, {postLogin})(Login); 
-

@@ -38,11 +38,7 @@ class App extends React.Component {
                         <Route path="/dialogs" render={()=><Dialogs/>}/>
                         <Route path="/friends" render={()=><Friends/>}/>
                     </div>
-                    <div className="footer">
-                      <Footer />
-                    </div>
                 </div>
-          
         }
       </BrowserRouter>     
     ); 

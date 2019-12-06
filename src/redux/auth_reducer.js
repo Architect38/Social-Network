@@ -13,6 +13,12 @@ const changeAuthFetching = (status)=>{
         status
     }
 }
+const setCaptchaUrl = (captchaUrl)=>{
+    return {
+        type: "set_captcha",
+        captchaUrl
+    }
+}
 
 //=================================================
 export const getLogin = ()=>{
@@ -24,14 +30,22 @@ export const getLogin = ()=>{
         });
     }
 }
-export const postLogin = (login,password,rememberMe)=>{
+export const getCaptchaUrl = ()=>{
+    return async (dispatch)=>{
+        const response = await authAPI.getCaptchaUrl();
+        const captchaUrl = response.data.url;
+        dispatch(setCaptchaUrl(captchaUrl));
+    }
+}
+export const postLogin = (login,password,rememberMe,captcha)=>{
     return (dispatch)=>{
         dispatch(changeAuthFetching(true));
-        authAPI.postLogin(login,password,rememberMe).then(data=>{
+        authAPI.postLogin(login,password,rememberMe, captcha).then(data=>{
             if (data.data.resultCode===0) dispatch(getLogin());
             else {
+                if (data.data.resultCode===10) dispatch(getCaptchaUrl());
                 dispatch(changeAuthFetching(false));
-                dispatch (stopSubmit("login", {_error:"Login or password is incorrect"}));
+                dispatch (stopSubmit("login", {_error:data.data.messages[0]}));
             }
         });
     }
@@ -41,6 +55,7 @@ export const logout = ()=>{
         dispatch(changeAuthFetching(true));
         authAPI.logout().then(data=>{
             dispatch(getLogin());
+            dispatch(setCaptchaUrl(null));
             dispatch(changeAuthFetching(false));
         });
     }
@@ -50,7 +65,8 @@ export const logout = ()=>{
 let initialState = {
     isAuth: false,
     authFetching: false,
-    dataProfile: null
+    dataProfile: null,
+    captchaUrl: null,
 }
 //===================================================
 
@@ -61,6 +77,11 @@ const authReducer = function(state = initialState, action){
                 ...state,
                 dataProfile: action.dataProfile,
                 isAuth: action.dataProfile.resultCode===0?true:false
+            }
+        case "set_captcha":
+            return {
+                ...state,
+                captchaUrl: action.captchaUrl
             }
         case "changeAuthFetching":
             return {

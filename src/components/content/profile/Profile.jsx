@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Profile.module.css';
-import { addPost, getProfile, getStatus, updateStatus } from '../../../redux/profile_reducer';
+import { addPost, getProfile, getStatus, updateStatus, updatePhoto } from '../../../redux/profile_reducer';
 import { connect } from 'react-redux';
 import MyPosts from './my_posts/MyPosts';
 import ProfileInfo from './profile_info/ProfileInfo';
@@ -11,10 +11,24 @@ function Profile(props){
   return (
     <div className={s.main}>
       <ProfileInfo 
-        getStatus = {props.getStatus} status = {props.status} myId = {props.myId} isFetching = {props.isFetching} 
-        profileInfo = {props.profileInfo} getProfile={props.getProfile} 
-        urlUserId = {props.match.params.userid} updateStatus = {props.updateStatus}/>
-      <MyPosts posts = {props.posts} addPost={props.addPost}/>
+        status = {props.status} 
+        myId = {props.myId} 
+        isFetching = {props.isFetching} 
+        profileInfo = {props.profileInfo}
+        urlUserId = {props.match.params.userid} 
+        updateStatus = {props.updateStatus}
+        getStatus = {props.getStatus} 
+        getProfile={props.getProfile} 
+        updatePhoto={props.updatePhoto}
+      />
+      <MyPosts 
+        posts = {props.posts} 
+        addPost={props.addPost}
+        myId={props.myId}
+        urlUserId = {props.match.params.userid}
+        profileInfo = {props.profileInfo}
+        getProfile={props.getProfile} 
+      />
     </div>
   );
 }
@@ -31,4 +45,4 @@ let mapStateToProps = (state) => {
 }
 
 let urlRouterContainer = withRouter(authRedirect(Profile));
-export default connect(mapStateToProps, {addPost, getProfile, getStatus, updateStatus})(urlRouterContainer); 
+export default connect(mapStateToProps, {addPost, getProfile, getStatus, updateStatus, updatePhoto})(urlRouterContainer); 

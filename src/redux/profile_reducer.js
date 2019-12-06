@@ -13,6 +13,7 @@ const setStatus = (status)=>{
         status
     }
 }
+
 const changeFetching = (status)=>{
     return {
         type: "changeFetching",
@@ -52,6 +53,15 @@ export const updateStatus = (status)=>{
     }
 }
 
+export const updatePhoto = (photoFile, id) => {
+    return (dispatch)=>{
+        dispatch(changeFetching(true));
+        profileAPI.updatePhoto(photoFile).then(response=>{
+            dispatch(changeFetching(false));
+            dispatch(getProfile(id));
+        });
+    }
+}
 
 
 //Начальный state===================================
@@ -59,9 +69,9 @@ let initialState = {
     profileInfo: null,
     status:"",
     posts: [
-        {id:1, post:"Post#1", status:"added"},
-        {id:2, post:"Post#2", status:"added"},
-        {id:3, post:"Post#3", status:"added"},
+        {id:1, post:"hi!!!!!!!!!!!!!", status:"added"},
+        {id:2, post:"Hellooooooo!", status:"added"},
+        {id:3, post:"I'm Andrew!", status:"added"},
     ],
     isFetching: false
 }

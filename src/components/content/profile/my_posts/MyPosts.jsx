@@ -1,28 +1,51 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 
-function MyPosts(props){
+let MyRef = React.createRef();
 
-  let MyRef = React.createRef();
-  return (
-    <div className={s.main}>
-      <textarea placeholder="Write your Post!"  ref = {MyRef}></textarea>
-      <a href="#" onClick={(e)=>{
-        if (MyRef.current.value!="") props.addPost(MyRef.current.value);
-        e.preventDefault();
-        MyRef.current.value = ""; 
-      }}>
-        Добавить запись
-      </a>
-      {props.posts.map((item,i,arr)=>{
-        return(
-          <div key = {arr[arr.length-i-1].id} className = {s.post}>
-            <img src={`/avatar.jpg`} align='top'/>
+class MyPosts extends React.Component{
+  constructor(props){
+    super(props);
+    this.addPost = this.addPost.bind(this);
+  }
+  addPost(e){
+    if (MyRef.current.value!="") this.props.addPost(MyRef.current.value);
+    e.preventDefault();
+    MyRef.current.value = ""; 
+  }
+  componentDidMount(){
+    let id;
+    this.props.urlUserId==undefined?id = this.props.myId:id = this.props.urlUserId;
+    this.props.getProfile(id);
+  }
+  render(){
+    let myProfile = this.props.urlUserId===undefined?true:false;
+    let avatar = this.props.profileInfo===null||this.props.profileInfo.photos.large===null?`/avatar.jpg`:this.props.profileInfo.photos.large;
+    let posts = this.props.posts.map((item,i,arr)=>{
+      return(
+        <div key = {arr[arr.length-i-1].id} className = {s.post}>
+          <div><img src={myProfile===false?`/avatar.jpg`:avatar} align='top'/></div>
+          <div className={s.message}>
+            <p>{this.props.profileInfo!=null?this.props.profileInfo.fullName:""}</p>
             <p>{arr[arr.length-i-1].post}</p>
           </div>
-        );
-      })}
-    </div>
-  );
+        </div>
+      );
+    });
+    return (
+      <div className={s.main}>
+        {
+          myProfile
+            ?<div>
+                <textarea placeholder="Write your Post!"  ref = {MyRef}></textarea>
+                <a href="#" onClick={(e)=>this.addPost(e)}>Добавить запись</a>
+                {posts}
+             </div>
+            :<div className={s.noPosts}>No posts</div>
+        }
+        
+      </div>
+    );
+  }
 }
 export default MyPosts;

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
-import {Provider} from 'react-redux'; //С помощью провайдера мы можем прокинуть store на все приложение.
+import {Provider} from 'react-redux';
 
 
 ReactDOM.render(
@@ -15,19 +15,3 @@ ReactDOM.render(
 );
 
 serviceWorker.unregister();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

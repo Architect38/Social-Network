@@ -6,12 +6,10 @@ class Menu extends React.Component{
   render(){
     return (
       <div className={s.main}>
-        <div><NavLink exact to="/profile" activeClassName={s.activeLink}>Profile</NavLink></div>
-        <div><NavLink to="/dialogs" activeClassName={s.activeLink}>Dialogs</NavLink></div>
-        <div><NavLink to="/friends" activeClassName={s.activeLink}>Friends</NavLink></div>
+        <div><a href="/profile">Profile</a></div>
+        <div><a href="/friends">Users</a></div>
       </div>
     );
   }
-  
 }
 export default Menu;

@@ -26,6 +26,8 @@
   margin: 1rem;
 }
 .post{
+  display: grid;
+  grid-template-columns: 100px auto;
   margin-top:1rem;
   margin-left:2rem;
   border-radius: 1rem;
@@ -37,9 +39,16 @@
   height: 100px;
   border-radius: 50%;
 }
-.post p{
-  display: inline-block;
+.message{
   margin-left:2rem;
+}
+.message :first-child{
+  font-weight: bold;
+}
+.noPosts{
+  text-align: center;
+  font-size: 3rem;
+  opacity: 0.5;
 }
 
 /*@keyframes move { 
