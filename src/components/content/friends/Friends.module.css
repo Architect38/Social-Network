@@ -12,19 +12,23 @@
 }
 .friend p{
     display: inline-block;
+    font-weight: bold;
+    font-size: 1rem;
 }
-.friend .btnFollow{
+.btnFollow{
     text-decoration: none;
-    border:0.02rem solid black;
-    padding: 0.2rem;
-    color:black;
-    
+    border-radius: 20px;
+    padding: 0.6rem;
+    color:black; 
+    font-weight: normal;
+    font-size: 0.9rem;  
 }
 .follow{
-    background-color: rgb(15, 207, 63);
+    background: linear-gradient(to top left, powderblue, pink); 
 }
 .unfollow{
-    background-color: rgb(235, 8, 8);
+    background: #555555;
+    opacity: 0.7;
 }
 .friend .followPreloader{
     width: 30x;

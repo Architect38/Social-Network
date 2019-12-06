@@ -6,8 +6,12 @@ class Menu extends React.Component{
   render(){
     return (
       <div className={s.main}>
-        <div><a href="/profile">Profile</a></div>
-        <div><a href="/friends">Users</a></div>
+        <div><NavLink to="/profile">Profile</NavLink></div>
+        <div><NavLink to="/friends">Users</NavLink></div>
+        <div><NavLink to="/friends">Dialogs</NavLink></div>
+        <div><NavLink to="/friends">Music</NavLink></div>
+        <div><NavLink to="/friends">News</NavLink></div>
+        <div><NavLink to="/friends">Settings</NavLink></div>
       </div>
     );
   }

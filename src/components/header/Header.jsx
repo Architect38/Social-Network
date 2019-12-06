@@ -9,10 +9,10 @@ class Header extends React.Component{
     return (
       <div className={s.main}>    
         <div className={s.logo}>
-          <a href="/profile">
+          <NavLink to="/profile">
               <img src="/logo.png" align="top"/>
               <span>SocialKek</span>
-          </a>
+          </NavLink>
         </div>
         <div className={s.search}>
             <input type="text" placeholder="Искать здесь..."/>

@@ -1,18 +1,28 @@
-.main div{
+.main{
+     
     margin-top:1rem;
-    text-align: center;
-    border: 0.02rem solid black;
+    border-radius: 30px;
+    height: 100%;
+}
+.main div{
+    margin-top:0.5rem;
+    margin-left: 1rem;
 }
 .main div a{
     text-decoration: none;
     display:block;
-    padding: 1rem;
-    color: black;
+    padding: 0.5rem;
+    padding-left: 2rem;
     font-size: 1rem;
-}
-.main div a:hover {
     background-color: #555555;
     color: white;
+    border-radius: 30px;
+}
+.main div a:hover {
+    background-color: rgba(63, 197, 186, 0.363);
+    color: black;
+    font-weight: bold;
+    border-radius: 30px;
   }
 .main div a.activeLink {
     background-color: #555555;
