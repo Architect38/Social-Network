@@ -26,6 +26,12 @@ export const addPost = (newPost)=>{
         newPost
     }
 }
+export const deletePost = (idPost) =>{
+    return {
+        type: "delete_post",
+        idPost
+    }
+}
 //==================================================
 export const getProfile = (id)=>{
     return (dispatch)=>{
@@ -77,12 +83,19 @@ let initialState = {
 }
 //===================================================
 
-const profileReducer = function(state = initialState,action){ //При изменении состояния мы должны возвращать копию объекта
+const profileReducer = function(state = initialState,action){ 
     switch(action.type){
         case "add_post": 
-            return {      //возвращаем объект
-                ...state, //свойства от изначального объекта
-                posts: [...state.posts, {id:8, post: action.newPost, status:"added" }] //перезаписываем posts, где добавляем новый пост
+            return {      
+                ...state, 
+                posts: [...state.posts, {id:state.posts.length+1, post: action.newPost, status:"added" }] 
+            }
+        case "delete_post": 
+            return {      
+                ...state, 
+                posts: state.posts.filter((item)=>{
+                    return item.id!=action.idPost;
+                })
             }
         case "setProfile":
             return {      

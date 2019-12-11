@@ -32,6 +32,11 @@
       "type": "image/svg",
       "sizes": "192x192"
     },
+    {
+      "src": "del_post.svg",
+      "type": "image/svg",
+      "sizes": "20x20"
+    }
   ],
   "start_url": ".",
   "display": "standalone",

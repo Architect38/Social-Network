@@ -10,13 +10,13 @@ class Header extends React.Component{
       <div className={s.main}>    
         <div className={s.logo}>
           <NavLink to="/profile">
-              <img src="/logo.png" align="top"/>
+              <img src={process.env.PUBLIC_URL +"/logo.png"} align="top"/>
               <span>SocialKek</span>
           </NavLink>
         </div>
         <div className={s.search}>
             <input type="text" placeholder="Искать здесь..."/>
-            <img src = "/search_header.png"/>
+            <img src = {process.env.PUBLIC_URL +"/search_header.png"}/>
         </div>
         <div className={s.login}>
             <a>{this.props.dataProfile.data.login}</a>

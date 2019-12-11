@@ -30,7 +30,7 @@ class ProfileInfo extends React.Component{
   }
   render(){
     let avatar = this.props.profileInfo==null||this.props.profileInfo.photos.large==null
-      ? "/avatar_friend.png"
+      ? process.env.PUBLIC_URL +"/avatar_friend.png"
       : this.props.profileInfo.photos.large;
     return(
       <div className={s.main}>
@@ -43,7 +43,7 @@ class ProfileInfo extends React.Component{
             {
               this.props.isFetching===false
               ?<img src={avatar}/>
-              :<img src="/preloader.svg"/>
+              :<img src={process.env.PUBLIC_URL +"/preloader.svg"}/>
             }
             {
               this.state.myProfile&&this.state.displayChangeAvatar

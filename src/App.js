@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 
 //import { domainToASCII } from 'url';
 import Menu from './components/menu/Menu';
-import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Profile from './components/content/profile/Profile';
 import Dialogs from './components/content/dialogs/Dialogs';
@@ -22,9 +21,9 @@ class App extends React.Component {
     return(
       <BrowserRouter>
         { 
-          this.props.authFetching===true
-           ? <img src="/preloader.svg"/>
-           : this.props.isAuth===false
+          this.props.authFetching
+           ? <img src={process.env.PUBLIC_URL +"/preloader.svg"}/>
+           : !this.props.isAuth
               ? <Login/>
               : <div className="App">
                     <div className="menu">
@@ -34,10 +33,10 @@ class App extends React.Component {
                       <Header />
                     </div>
                     <div className="content">
-                        <Route exact path="/profile" render={()=><Profile/>}/>
-                        <Route path="/profile/:userid" render={()=><Profile/>}/>
-                        <Route path="/dialogs" render={()=><Dialogs/>}/>
-                        <Route path="/friends" render={()=><Friends/>}/>
+                        <Route exact path="/Social-Network/profile" render={()=><Profile/>}/>
+                        <Route path="/Social-Network/profile/:userid" render={()=><Profile/>}/>
+                        <Route path="/Social-Network/dialogs" render={()=><Dialogs/>}/>
+                        <Route path="/Social-Network/friends" render={()=><Friends/>}/>
                     </div>
                 </div>
         }

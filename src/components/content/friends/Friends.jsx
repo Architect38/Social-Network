@@ -31,17 +31,17 @@ class Friends extends React.Component{
         let pagesCount = Math.ceil(this.props.totalUsersCount/this.props.pageSize);
         return(
             <div className ={s.main}>
-            {this.props.isFetching==true?<img src='/preloader.svg'/>:<div>
+            {this.props.isFetching==true?<img src={process.env.PUBLIC_URL +'/preloader.svg'}/>:<div>
                 {this.props.friends.map((item)=>{
                     return (
                         <div key={item.id} className = {s.friend}>
-                            <NavLink to={`/profile/${item.id}`}>
-                                <img className = {s.avatar} src={item.photos.small==null?'/avatar_friend.png':item.photos.small} align="top"/>
+                            <NavLink to={`/Social-Network/profile/${item.id}`}>
+                                <img className = {s.avatar} src={item.photos.small==null?process.env.PUBLIC_URL +'/avatar_friend.png':item.photos.small} align="top"/>
                             </NavLink>
                             <p>{item.name}<br/><br/>
                             {this.props.isFollowFetching.some(r=>{return r==item.id})==false?<a href="#" className={`${s.btnFollow} ${item.followed ? s.follow : s.unfollow}`} data-id={item.id} onClick={this.followChange}>
                                 {item.followed ? "follow" : "unfollow"}
-                            </a>:<img className = {s.followPreloader} src="/preloader.svg"/>}
+                            </a>:<img className = {s.followPreloader} src={process.env.PUBLIC_URL +"/preloader.svg"}/>}
                             </p>
                         </div> 
                     );

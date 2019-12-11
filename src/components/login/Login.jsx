@@ -11,7 +11,7 @@ const LoginForm =(props)=>{
     return(
         <form onSubmit={props.handleSubmit}>
             <div className={s.logo}>
-                <img src="/logo.png" align="top"/>
+                <img src={process.env.PUBLIC_URL +"/logo.png"} align="top"/>
                 <span>SocialKek</span>
             </div>
             <div>
@@ -20,7 +20,7 @@ const LoginForm =(props)=>{
             </div>
             <div>
                 <Field placeholder="password" name="password" component={InputControl}
-                validate = {[required]}/> 
+                type="password" validate = {[required]}/> 
             </div>
             <div>
                 <Field name="rememberMe" component="input" type="checkbox"/>
@@ -39,7 +39,7 @@ const LoginForm =(props)=>{
                 {
                     props.authFetching===false
                     ?<button>Log in</button>
-                    :<img src="/preloader"/>
+                    :<img src={process.env.PUBLIC_URL +"/preloader"}/>
                 }
             </div>
             {props.error && <div className = {s.errorMessage}>{props.error}</div> }

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Profile.module.css';
-import { addPost, getProfile, getStatus, updateStatus, updatePhoto } from '../../../redux/profile_reducer';
+import { addPost, deletePost, getProfile, getStatus, updateStatus, updatePhoto } from '../../../redux/profile_reducer';
 import { connect } from 'react-redux';
 import MyPosts from './my_posts/MyPosts';
 import ProfileInfo from './profile_info/ProfileInfo';
@@ -24,6 +24,7 @@ function Profile(props){
       <MyPosts 
         posts = {props.posts} 
         addPost={props.addPost}
+        deletePost={props.deletePost}
         myId={props.myId}
         urlUserId = {props.match.params.userid}
         profileInfo = {props.profileInfo}
@@ -45,4 +46,4 @@ let mapStateToProps = (state) => {
 }
 
 let urlRouterContainer = withRouter(authRedirect(Profile));
-export default connect(mapStateToProps, {addPost, getProfile, getStatus, updateStatus, updatePhoto})(urlRouterContainer); 
+export default connect(mapStateToProps, {addPost, deletePost, getProfile, getStatus, updateStatus, updatePhoto})(urlRouterContainer); 

@@ -27,7 +27,7 @@
 }
 .post{
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: 100px auto 30px;
   margin-top:1rem;
   margin-left:2rem;
   border-radius: 1rem;
@@ -38,6 +38,11 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
+}
+.delPost img{
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
 }
 .message{
   margin-left:2rem;
