@@ -8,7 +8,7 @@
   <li>edit status</li>
   <li>display users</li>
   <li>go to user profile</li>
-  <li>follor/unfollow user</li>
+  <li>follow/unfollow user</li>
 </ul>
 </p>
 <p>In addition, an authentication mechanism and captcha are implemented</p>
